@@ -3,18 +3,10 @@
   "package": "supercoder79.databreaker.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "MixinBlockEntityType",
-    "MixinDFU",
-    "MixinMinecraftServer",
-    "MixinNbtHelper",
     "MixinSchemas",
-    "fix_log_spam.MixinUtil",
-    "fix_log_spam.MixinGameOptions",
-    "fix_log_spam.MixinLevelStorage"
+    "MixinUtil"
   ],
   "client": [
-    "MixinBackupPromptScreen",
-    "fix_log_spam.MixinLevelStorageClient"
   ],
   "injectors": {
     "defaultRequire": 1

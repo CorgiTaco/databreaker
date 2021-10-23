@@ -1,20 +1,32 @@
 package supercoder79.databreaker.mixin;
 
-import com.mojang.datafixers.DataFixerBuilder;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 import net.minecraft.datafixer.Schemas;
-import net.minecraft.datafixer.schema.Schema100;
-import net.minecraft.datafixer.schema.Schema99;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(Schemas.class)
 public class MixinSchemas {
+
+    // Return the input
     /**
-     * @reason The core of DataBreaker. Stops the game from loading schemas.
-     * @author SuperCoder79
+     * @author
      */
     @Overwrite
-    private static void build(DataFixerBuilder builder) {
+    private static DataFixer create() {
+        return new DataFixer() {
+            @Override
+            public <T> Dynamic<T> update(DSL.TypeReference type, Dynamic<T> input, int version, int newVersion) {
+                return input;
+            }
+
+            @Override
+            public Schema getSchema(int key) {
+                return null;
+            }
+        };
     }
 }
